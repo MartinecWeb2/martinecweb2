@@ -243,15 +243,18 @@ export default function BranchPage() {
         className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200/50"
       >
         <div className="max-w-7xl mx-auto px-3 md:px-6 py-3 md:py-4">
-          <div className="flex items-center justify-between gap-2">
+          <div className="relative flex items-center justify-center">
+            {/* Left side - Zpět */}
             <button
               onClick={() => router.push('/pobocky')}
-              className="flex items-center gap-1 md:gap-2 text-apple-gray hover:text-accent transition-colors text-sm md:text-base"
+              className="absolute left-0 flex items-center gap-1 md:gap-2 text-apple-gray hover:text-accent transition-colors text-sm md:text-base"
             >
               <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
               <span className="font-medium hidden sm:inline">Zpět na výběr</span>
               <span className="font-medium sm:hidden">Zpět</span>
             </button>
+            
+            {/* Center - Logo */}
             <Image
               src="/images/loga/Logo-Autoskola-Martinec-1.png"
               alt="Autoškola Martinec"
@@ -259,15 +262,47 @@ export default function BranchPage() {
               height={75}
               className="h-8 md:h-12 w-auto"
             />
-            {/* Desktop button */}
-            <button 
-              onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
-              className="hidden md:flex px-6 py-2 bg-accent text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Online Přihláška
-            </button>
-            {/* Mobile spacer to keep logo centered */}
-            <div className="md:hidden w-16"></div>
+            
+            {/* Right side - Social Media */}
+            <div className="absolute right-0 flex items-center gap-4">
+              <a
+                href="https://www.facebook.com/autoskolamartinec"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Facebook"
+              >
+                <Image
+                  src="/images/icony/facebook.webp"
+                  alt="Facebook"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/autoskolamartinec/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Instagram"
+              >
+                <Image
+                  src="/images/icony/instagram.webp"
+                  alt="Instagram"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
+              {/* Desktop button */}
+              <button 
+                onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
+                className="hidden md:flex px-6 py-2 bg-accent text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Online Přihláška
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -448,9 +483,6 @@ export default function BranchPage() {
             <h2 className="text-5xl md:text-6xl font-bold text-apple-gray mb-6 tracking-tight">
               Služby a Ceny
             </h2>
-            <p className="text-xl text-gray-600 font-light">
-              Veškeré kurzy lze hradit ve splátkách
-            </p>
           </motion.div>
 
           {/* Mobile Swiper */}
@@ -505,6 +537,12 @@ export default function BranchPage() {
                         </li>
                       ))}
                     </ul>
+
+                    {(course.name === 'Řidičský průkaz skupiny B (vč. L17)' || course.name === 'Vrácení řidičského průkazu' || course.name === 'Kondiční jízdy') && (
+                      <p className={`text-sm font-medium text-center mb-4 ${course.featured ? 'text-white/80' : 'text-accent'}`}>
+                        Také jako dárkový poukaz
+                      </p>
+                    )}
 
                     <button 
                       onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
@@ -568,6 +606,12 @@ export default function BranchPage() {
                   ))}
                 </ul>
 
+                {(course.name === 'Řidičský průkaz skupiny B (vč. L17)' || course.name === 'Vrácení řidičského průkazu' || course.name === 'Kondiční jízdy') && (
+                  <p className={`text-sm font-medium text-center mb-6 ${course.featured ? 'text-white/80' : 'text-accent'}`}>
+                    Také jako dárkový poukaz
+                  </p>
+                )}
+
                 <button 
                   onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
                   className={`w-full py-4 rounded-full font-semibold transition-colors ${
@@ -580,7 +624,10 @@ export default function BranchPage() {
               </motion.div>
             ))}
           </div>
-        </div>
+        <p className="text-center text-base text-gray-500 font-light mt-12">
+          Veškeré naše služby lze hradit ve splátkách bez navýšení
+        </p>
+      </div>
       </section>
 
       {/* Reviews Section */}
@@ -601,31 +648,9 @@ export default function BranchPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {branch.reviews.map((review, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 shadow-lg"
-              >
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 italic">"{review.text}"</p>
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-apple-gray">{review.name}</span>
-                  <span className="text-sm text-gray-400">{review.date}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <div className="trustindex-widget-container" dangerouslySetInnerHTML={{
+              __html: `<script defer async src='https://cdn.trustindex.io/loader.js?0465f2161805346170060bebfd2'></script>`
+            }} />
         </div>
       </section>
 
