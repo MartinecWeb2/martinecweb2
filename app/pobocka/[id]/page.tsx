@@ -240,7 +240,7 @@ export default function BranchPage() {
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-gray-200/50"
+        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200/50"
       >
         <div className="max-w-7xl mx-auto px-3 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between gap-2">
