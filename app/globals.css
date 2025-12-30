@@ -57,4 +57,10 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
+
+  /* TrustIndex Wrapper Styles */
+  .trustindex-wrapper {
+    min-height: 420px;
+    display: block;
+  }
 }

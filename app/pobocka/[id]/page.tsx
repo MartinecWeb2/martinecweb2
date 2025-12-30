@@ -20,6 +20,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import dynamic from 'next/dynamic'
+
+const TrustIndex = dynamic(() => import('@/app/components/TrustIndex'), {
+  ssr: false,
+});
 
 const branchData = {
   bystrice: {
@@ -630,27 +635,20 @@ export default function BranchPage() {
       </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="py-32 px-6 bg-apple-light">
+      {/* TrustIndex Section - PEVNÝ WRAPPER */}
+      <section className="py-32 bg-apple-light">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold text-apple-gray mb-6 tracking-tight">
-              Za nás mluví vaše recenze
-            </h2>
-            <p className="text-xl text-gray-600 font-light">
-              Přečtěte si, co o nás říkají naši absolventi
-            </p>
-          </motion.div>
+          <h2 className="text-5xl md:text-6xl font-bold text-apple-gray mb-6 tracking-tight text-center">
+            Za nás mluví vaše recenze
+          </h2>
 
-          <div className="trustindex-widget-container" dangerouslySetInnerHTML={{
-              __html: `<script defer async src='https://cdn.trustindex.io/loader.js?0465f2161805346170060bebfd2'></script>`
-            }} />
+          <p className="text-xl text-gray-600 font-light text-center mb-20">
+            Přečtěte si, co o nás říkají naši absolventi
+          </p>
+
+          <div className="trustindex-wrapper">
+            <TrustIndex />
+          </div>
         </div>
       </section>
 
