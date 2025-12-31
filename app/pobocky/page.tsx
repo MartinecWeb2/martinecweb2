@@ -1,12 +1,18 @@
-'use client'
-
+import { Metadata } from 'next'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { MapPin, ArrowRight, Phone } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect } from 'react'
 
-export default function BranchSelection() {
+export const metadata: Metadata = {
+  title: 'Pobočky - Autoškola Martinec',
+  description: 'Vyberte si pobočku Autoškoly Martinec – Přerov nebo Bystřice pod Hostýnem. Kvalitní výuka, zkušení instruktoři a moderní přístup.',
+}
+
+'use client'
+
+function BranchSelectionClient() {
   const router = useRouter()
 
   useEffect(() => {
@@ -177,3 +183,5 @@ export default function BranchSelection() {
     </div>
   )
 }
+
+export default BranchSelectionClient
