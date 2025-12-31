@@ -145,13 +145,7 @@ export default function BranchSelection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + index * 0.2 }}
                   >
-                    <div className="flex items-center gap-2 mb-3">
-                      <MapPin className="w-5 h-5 text-white" />
-                      <span className="text-white/90 text-sm font-medium">
-                        Pobočka
-                      </span>
-                    </div>
-                    
+                                        
                     <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">
                       {branch.name}
                     </h2>
