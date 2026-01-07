@@ -12,7 +12,7 @@ export default function TrustIndex() {
     ref.current.innerHTML = '';
 
     const script = document.createElement('script');
-    script.src = 'https://cdn.trustindex.io/loader.js?0465f2161805346170060bebfd2';
+    script.src = 'https://cdn.trustindex.io/loader.js?dc3adaf611e974869d96a18e73b';
     script.async = true;
     script.defer = true;
 
