@@ -96,13 +96,14 @@ export default function GoogleReviews({ placeId }: GoogleReviewsProps) {
         slidesPerView={1}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop={reviews.length > 3}
         breakpoints={{
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
         className="!pb-12"
       >
-        {reviews.map((review, index) => (
+        {reviews.slice(0, 10).map((review, index) => (
           <SwiperSlide key={index}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

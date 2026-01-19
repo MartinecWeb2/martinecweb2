@@ -126,7 +126,7 @@ const branchData = {
     email: 'info@autoskola-martinec.cz',
     hours: 'Po telefonické domluvě',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5187.894711080862!2d17.448945!3d49.447712!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x201f59448c58c00b%3A0x665c1764727f38fb!2sAuto%C5%A1kola%20Martinec!5e0!3m2!1scs!2sus!4v1763951848356!5m2!1scs!2sus',
-    placeId: 'ChIJC8BYjESfH0cR-zi3cnQXXGY',
+    placeId: 'ChIJC8BYjERZHyAR-zh_cmQXXGY',
     features: [
       {
         icon: Car,
