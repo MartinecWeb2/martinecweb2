@@ -24,6 +24,8 @@ export async function GET(request: Request) {
 
     const data = await response.json()
 
+    console.log('Google API Response:', data)
+
     if (data.status === 'OK') {
       return NextResponse.json({
         reviews: data.result.reviews || [],
@@ -31,14 +33,16 @@ export async function GET(request: Request) {
         user_ratings_total: data.result.user_ratings_total || 0,
       })
     } else {
+      console.error('Google API Error:', data.status, data.error_message)
       return NextResponse.json(
-        { error: `Google API error: ${data.status}` },
+        { error: `Google API error: ${data.status} - ${data.error_message || 'Neznámá chyba'}` },
         { status: 500 }
       )
     }
   } catch (error) {
+    console.error('Fetch error:', error)
     return NextResponse.json(
-      { error: 'Chyba při načítání recenzí' },
+      { error: 'Chyba při načítání recenzí', details: String(error) },
       { status: 500 }
     )
   }
