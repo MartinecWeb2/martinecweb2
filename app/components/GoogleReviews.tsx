@@ -124,7 +124,7 @@ export default function GoogleReviews({ placeId }: GoogleReviewsProps) {
                     if (fallback) fallback.style.display = 'flex';
                   }}
                 />
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-blue-700 items-center justify-center text-white font-bold text-lg flex-shrink-0 hidden">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 items-center justify-center text-white font-bold text-lg flex-shrink-0 hidden">
                   {review.author_name.charAt(0)}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -159,7 +159,7 @@ export default function GoogleReviews({ placeId }: GoogleReviewsProps) {
           href={`https://search.google.com/local/reviews?placeid=${placeId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
+          className="inline-flex items-center gap-2 px-8 py-3 bg-apple-gray text-white rounded-full font-semibold hover:bg-apple-gray/90 transition-colors"
         >
           Zobrazit všechny recenze na Google
         </a>
