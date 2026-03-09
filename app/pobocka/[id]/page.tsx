@@ -162,7 +162,7 @@ const branchData = {
       {
         name: 'Řidičský průkaz skupiny B (vč. L17)',
         subtitle: 'Zahájení kurzu každý týden (délka trvání kurzu včetně závěrečné zkoušky 2-3 měsíce)',
-        price: '19 990 Kč',
+        price: '20 890 Kč',
         features: [
           '28 hodin jízd + 2 Bonusové ZDARMA',
           'Individuální výukový plán přizpůsobený vašemu tempu.',
