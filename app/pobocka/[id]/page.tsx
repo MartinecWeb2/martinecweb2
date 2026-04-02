@@ -556,13 +556,16 @@ export default function BranchPage() {
                         href="https://www.l17.cz/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`block w-full py-2 rounded-full font-semibold text-center text-sm mb-2 transition-colors border ${
+                        className={`flex items-center justify-center gap-2 w-full py-2 rounded-full text-center text-xs font-medium mb-3 transition-all hover:opacity-80 ${
                           course.featured
-                            ? 'bg-transparent text-white border-white/30 hover:bg-white/10'
-                            : 'bg-transparent text-apple-gray border-apple-gray/30 hover:bg-apple-gray/10'
+                            ? 'text-white/70 underline underline-offset-2 decoration-white/40 hover:decoration-white/70'
+                            : 'text-gray-500 underline underline-offset-2 decoration-gray-300 hover:text-gray-700 hover:decoration-gray-500'
                         }`}
                       >
-                        Info o L17
+                        Více informací o L17
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
                       </a>
                     )}
 
@@ -639,13 +642,16 @@ export default function BranchPage() {
                     href="https://www.l17.cz/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block w-full py-3 rounded-full font-semibold text-center mb-4 transition-colors border ${
+                    className={`flex items-center justify-center gap-2 w-full py-2 rounded-full text-center text-sm font-medium mb-4 transition-all hover:opacity-80 ${
                       course.featured
-                        ? 'bg-transparent text-white border-white/30 hover:bg-white/10'
-                        : 'bg-transparent text-apple-gray border-apple-gray/30 hover:bg-apple-gray/10'
+                        ? 'text-white/70 underline underline-offset-2 decoration-white/40 hover:decoration-white/70'
+                        : 'text-gray-500 underline underline-offset-2 decoration-gray-300 hover:text-gray-700 hover:decoration-gray-500'
                     }`}
                   >
-                    Info o L17
+                    Více informací o L17
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
                   </a>
                 )}
 
