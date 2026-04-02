@@ -162,7 +162,7 @@ const branchData = {
       {
         name: 'Řidičský průkaz skupiny B (vč. L17)',
         subtitle: 'Zahájení kurzu každý týden (délka trvání kurzu včetně závěrečné zkoušky 2-3 měsíce)',
-        price: '20 890 Kč',
+        price: '21 490 Kč',
         features: [
           '28 hodin jízd + 2 Bonusové ZDARMA',
           'Individuální výukový plán přizpůsobený vašemu tempu.',
@@ -551,6 +551,21 @@ export default function BranchPage() {
                       </p>
                     )}
 
+                    {course.name === 'Řidičský průkaz skupiny B (vč. L17)' && (
+                      <a
+                        href="https://www.l17.cz/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`block w-full py-2 rounded-full font-semibold text-center text-sm mb-2 transition-colors border ${
+                          course.featured
+                            ? 'bg-transparent text-white border-white/30 hover:bg-white/10'
+                            : 'bg-transparent text-apple-gray border-apple-gray/30 hover:bg-apple-gray/10'
+                        }`}
+                      >
+                        Info o L17
+                      </a>
+                    )}
+
                     <button 
                       onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
                       className={`w-full py-3 rounded-full font-semibold transition-colors text-sm ${
@@ -617,6 +632,21 @@ export default function BranchPage() {
                   <p className={`text-sm font-medium text-center mb-6 ${course.featured ? 'text-white/80' : 'text-accent'}`}>
                     Také jako dárkový poukaz
                   </p>
+                )}
+
+                {course.name === 'Řidičský průkaz skupiny B (vč. L17)' && (
+                  <a
+                    href="https://www.l17.cz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block w-full py-3 rounded-full font-semibold text-center mb-4 transition-colors border ${
+                      course.featured
+                        ? 'bg-transparent text-white border-white/30 hover:bg-white/10'
+                        : 'bg-transparent text-apple-gray border-apple-gray/30 hover:bg-apple-gray/10'
+                    }`}
+                  >
+                    Info o L17
+                  </a>
                 )}
 
                 <button 
