@@ -22,7 +22,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import dynamic from 'next/dynamic'
 
-const GoogleReviews = dynamic(() => import('@/app/components/GoogleReviews'), {
+const LocalReviews = dynamic(() => import('@/app/components/LocalReviews'), {
   ssr: false,
 });
 
@@ -38,6 +38,7 @@ const branchData = {
     hours: 'Po telefonické domluvě',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5193.004600816715!2d17.672359!3d49.399406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713a14ae8c9392d%3A0x33e03af248396dfe!2sAuto%C5%A1kola%20Byst%C5%99ice%20pod%20Host%C3%BDnem%20-%20Auto%C5%A1kola%20Martinec!5e0!3m2!1scs!2sus!4v1763951803409!5m2!1scs!2sus',
     placeId: 'ChIJC8BYjERZHyAR-zh_cmQXXGY',
+    googleReviewsUrl: 'https://www.google.com/maps/place/Auto%C5%A1kola+Martinec+-+P%C5%99erov/@49.4477155,17.4463703,17z/data=!4m8!3m7!1s0x201f59448c58c00b:0x665c1764727f38fb!8m2!3d49.447712!4d17.4489452!9m1!1b1!16s%2Fg%2F11vd709mqy',
     features: [
       {
         icon: Car,
@@ -127,6 +128,7 @@ const branchData = {
     hours: 'Po telefonické domluvě',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5187.894711080862!2d17.448945!3d49.447712!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x201f59448c58c00b%3A0x665c1764727f38fb!2sAuto%C5%A1kola%20Martinec!5e0!3m2!1scs!2sus!4v1763951848356!5m2!1scs!2sus',
     placeId: 'ChIJC8BYjERZHyAR-zh_cmQXXGY',
+    googleReviewsUrl: 'https://www.google.com/maps/place/Auto%C5%A1kola+Martinec+-+P%C5%99erov/@49.4477155,17.4463703,17z/data=!4m8!3m7!1s0x201f59448c58c00b:0x665c1764727f38fb!8m2!3d49.447712!4d17.4489452!9m1!1b1!16s%2Fg%2F11vd709mqy',
     features: [
       {
         icon: Car,
@@ -684,8 +686,8 @@ export default function BranchPage() {
             Přečtěte si, co o nás říkají naši absolventi
           </p>
 
-          <div className="google-reviews-wrapper">
-            <GoogleReviews placeId={branch.placeId} />
+          <div className="px-6">
+            <LocalReviews googleReviewsUrl={branch.googleReviewsUrl} />
           </div>
         </div>
       </section>
