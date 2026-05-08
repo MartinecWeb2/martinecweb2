@@ -164,7 +164,7 @@ const branchData = {
       {
         name: 'Řidičský průkaz skupiny B (vč. L17)',
         subtitle: 'Délka trvání kurzu včetně závěrečné zkoušky 3-4 měsíce',
-        price: '22 490 Kč',
+        price: '21 900 Kč',
         features: [
           '28 hodin jízd + 2 Bonusové ZDARMA',
           'Individuální výukový plán přizpůsobený vašemu tempu.',
@@ -539,7 +539,7 @@ export default function BranchPage() {
                             : 'bg-accent/10 text-accent border border-accent/20'
                         }`}>
                           <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span>Aktuálně máme plno do srpna 2026</span>
+                          <span>Aktuálně máme plno do července 2026</span>
                         </div>
                       )}
                     </div>
@@ -637,7 +637,7 @@ export default function BranchPage() {
                         : 'bg-accent/10 text-accent border border-accent/20'
                     }`}>
                       <Calendar className="w-4 h-4 flex-shrink-0" />
-                      <span>Aktuálně máme plno do srpna 2026</span>
+                      <span>Aktuálně máme plno do července 2026</span>
                     </div>
                   )}
                 </div>
