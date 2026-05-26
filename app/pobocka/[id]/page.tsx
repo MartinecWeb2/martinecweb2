@@ -74,7 +74,7 @@ const branchData = {
       {
         name: 'Řidičský průkaz skupiny B (vč. L17)',
         subtitle: 'Zahájení kurzu každý týden (délka trvání kurzu včetně závěrečné zkoušky 3-4 měsíce)',
-        price: '19 990 Kč',
+        price: '20 490 Kč',
         features: [
           '28 hodin jízd + 2 Bonusové ZDARMA',
           'Individuální výukový plán přizpůsobený vašemu tempu.',
@@ -163,8 +163,8 @@ const branchData = {
       },
       {
         name: 'Řidičský průkaz skupiny B (vč. L17)',
-        subtitle: 'Délka trvání kurzu včetně závěrečné zkoušky 3-4 měsíce',
-        price: '21 900 Kč',
+        subtitle: 'Zahájení kurzu každý týden (délka trvání kurzu včetně závěrečné zkoušky 3-4 měsíce)',
+        price: '21 490Kč',
         features: [
           '28 hodin jízd + 2 Bonusové ZDARMA',
           'Individuální výukový plán přizpůsobený vašemu tempu.',
@@ -532,16 +532,6 @@ export default function BranchPage() {
                       <div className="flex items-baseline gap-2">
                         <span className="text-3xl font-bold">{course.price}</span>
                       </div>
-                      {branchId === 'prerov' && course.name === 'Řidičský průkaz skupiny B (vč. L17)' && (
-                        <div className={`mt-3 px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-2 ${
-                          course.featured
-                            ? 'bg-white/10 text-white/85 border border-white/20'
-                            : 'bg-accent/10 text-accent border border-accent/20'
-                        }`}>
-                          <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span>Aktuálně máme plno do července 2026</span>
-                        </div>
-                      )}
                     </div>
 
                     <ul className="space-y-2 mb-4 text-sm">
@@ -581,17 +571,15 @@ export default function BranchPage() {
                       </a>
                     )}
 
-                    {!(branchId === 'prerov' && course.name === 'Řidičský průkaz skupiny B (vč. L17)') && (
-                      <button 
-                        onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
-                        className={`w-full py-3 rounded-full font-semibold transition-colors text-sm ${
-                        course.featured
-                          ? 'bg-white text-apple-gray hover:bg-white/95'
-                          : 'bg-apple-gray text-white hover:bg-apple-gray/90'
-                      }`}>
-                        Podat Přihlášku
-                      </button>
-                    )}
+                    <button 
+                      onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
+                      className={`w-full py-3 rounded-full font-semibold transition-colors text-sm ${
+                      course.featured
+                        ? 'bg-white text-apple-gray hover:bg-white/95'
+                        : 'bg-apple-gray text-white hover:bg-apple-gray/90'
+                    }`}>
+                      Podat Přihlášku
+                    </button>
                   </div>
                 </SwiperSlide>
               ))}
@@ -630,16 +618,6 @@ export default function BranchPage() {
                   <div className="flex items-baseline gap-2">
                     <span className="text-5xl font-bold">{course.price}</span>
                   </div>
-                  {branchId === 'prerov' && course.name === 'Řidičský průkaz skupiny B (vč. L17)' && (
-                    <div className={`mt-4 px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-2 ${
-                      course.featured
-                        ? 'bg-white/10 text-white/85 border border-white/20'
-                        : 'bg-accent/10 text-accent border border-accent/20'
-                    }`}>
-                      <Calendar className="w-4 h-4 flex-shrink-0" />
-                      <span>Aktuálně máme plno do července 2026</span>
-                    </div>
-                  )}
                 </div>
 
                 <ul className="space-y-4 mb-8">
@@ -679,17 +657,15 @@ export default function BranchPage() {
                   </a>
                 )}
 
-                {!(branchId === 'prerov' && course.name === 'Řidičský průkaz skupiny B (vč. L17)') && (
-                  <button 
-                    onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
-                    className={`w-full py-4 rounded-full font-semibold transition-colors ${
-                    course.featured
-                      ? 'bg-white text-apple-gray hover:bg-white/95'
-                      : 'bg-apple-gray text-white hover:bg-apple-gray/90'
-                  }`}>
-                    Podat Přihlášku
-                  </button>
-                )}
+                <button 
+                  onClick={() => window.open('https://martinec.moje-autoskola.cz/prihlaska.php?iframe=1', '_blank')}
+                  className={`w-full py-4 rounded-full font-semibold transition-colors ${
+                  course.featured
+                    ? 'bg-white text-apple-gray hover:bg-white/95'
+                    : 'bg-apple-gray text-white hover:bg-apple-gray/90'
+                }`}>
+                  Podat Přihlášku
+                </button>
               </motion.div>
             ))}
           </div>
