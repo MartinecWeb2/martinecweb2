@@ -1,9 +1,36 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { siteConfig } from './lib/site'
 
 export const metadata: Metadata = {
-  title: 'Autoškola Martinec',
-  description: 'Moderní autoškola s pobočkami v Bystřici pod Hostýnem a Přerově. Kvalitní výuka, individuální přístup a vysoká úspěšnost u zkoušek.',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    type: 'website',
+    locale: 'cs_CZ',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
   icons: {
     icon: [
       { url: '/images/loga/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
