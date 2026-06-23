@@ -126,9 +126,9 @@ const googleReviewsUrl =
 export const branchData: Record<string, Branch> = {
   bystrice: {
     name: 'Bystřice pod Hostýnem',
-    slogan: 'Vaše cesta začíná zde',
+    slogan: 'Individuální výuka pod Hostýnskými vrchy',
     hero: '/images/pobocky/IMG_5742.jpeg',
-    description: 'Moderní autoškola v srdci Hostýnských vrchů',
+    description: 'Autoškola skupiny B v srdci Bystřice pod Hostýnem',
     address: 'Masarykovo nám. 69, 768 61 Bystřice pod Hostýnem',
     phone: '+420 603 398 127',
     email: 'info@autoskola-martinec.cz',
@@ -141,9 +141,9 @@ export const branchData: Record<string, Branch> = {
   },
   prerov: {
     name: 'Přerov',
-    slogan: 'Vaše cesta začíná zde',
+    slogan: 'Profesionální výuka v centru Přerova',
     hero: '/images/pobocky/5.jpg',
-    description: 'Moderní autoškola v centru Přerova',
+    description: 'Vaše přerovská autoškola pro skupinu B',
     address: 'Kramářova 21, 750 02 Přerov',
     phone: '+420 603 398 127',
     email: 'info@autoskola-martinec.cz',

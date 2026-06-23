@@ -1,20 +1,22 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
 import type { Course } from '@/app/data/branches'
 import { PRIHLASKA_URL } from '@/app/data/branches'
-import 'swiper/css'
-import 'swiper/css/pagination'
 
 const MOBILE_ORDER = [
   'Řidičský průkaz skupiny B (vč. L17)',
   'Vrácení řidičského průkazu',
   'Kondiční jízdy',
 ]
+
+const SHORT_LABELS: Record<string, string> = {
+  'Řidičský průkaz skupiny B (vč. L17)': 'Skupina B',
+  'Vrácení řidičského průkazu': 'Vrácení RP',
+  'Kondiční jízdy': 'Kondiční jízdy',
+}
 
 const GIFT_VOUCHER_COURSES = new Set([
   'Řidičský průkaz skupiny B (vč. L17)',
@@ -49,9 +51,7 @@ function CourseCard({
       {course.featured && (
         <div
           className={`absolute left-1/2 -translate-x-1/2 bg-accent text-white rounded-full font-semibold whitespace-nowrap ${
-            compact
-              ? '-top-3 px-4 py-1.5 text-xs'
-              : '-top-4 px-6 py-2 text-sm'
+            compact ? '-top-3 px-4 py-1.5 text-xs' : '-top-4 px-6 py-2 text-sm'
           }`}
         >
           Nejoblíbenější
@@ -82,9 +82,9 @@ function CourseCard({
         {course.features.map((feature) => (
           <li key={feature} className="flex items-start gap-3">
             <CheckCircle
-              className={`mt-0.5 flex-shrink-0 ${
-                compact ? 'w-5 h-5' : 'w-5 h-5'
-              } ${course.featured ? 'text-white' : 'text-accent'}`}
+              className={`mt-0.5 flex-shrink-0 w-5 h-5 ${
+                course.featured ? 'text-white' : 'text-accent'
+              }`}
             />
             <span className={course.featured ? 'text-white/90' : 'text-gray-600'}>
               {feature}
@@ -145,6 +145,57 @@ function CourseCard({
   )
 }
 
+function MobileCoursePricing({ courses }: { courses: Course[] }) {
+  const sorted = sortForMobile(courses)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const active = sorted[activeIndex]
+
+  return (
+    <div>
+      <div className="grid grid-cols-3 gap-2 p-1.5 mb-6 bg-gray-100 rounded-2xl">
+        {sorted.map((course, index) => {
+          const isActive = index === activeIndex
+          return (
+            <button
+              key={course.name}
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              className={`relative px-2 py-3 rounded-xl text-center transition-all duration-200 ${
+                isActive
+                  ? 'bg-white text-apple-gray shadow-sm ring-1 ring-black/5'
+                  : 'text-gray-500 hover:text-apple-gray'
+              }`}
+            >
+              <span className="block text-xs font-semibold leading-tight">
+                {SHORT_LABELS[course.name] ?? course.name}
+              </span>
+              <span
+                className={`block text-xs font-bold mt-1 leading-tight ${
+                  isActive ? 'text-accent' : 'text-gray-400'
+                }`}
+              >
+                {course.price}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active.name}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25 }}
+        >
+          <CourseCard course={active} />
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  )
+}
+
 export default function CoursePricing({ courses }: { courses: Course[] }) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
@@ -161,27 +212,7 @@ export default function CoursePricing({ courses }: { courses: Course[] }) {
   }
 
   if (isMobile) {
-    const mobileCourses = sortForMobile(courses)
-
-    return (
-      <div className="pt-8 -mx-6 px-6">
-        <Swiper
-          modules={[Pagination]}
-          spaceBetween={16}
-          slidesPerView={1.15}
-          centeredSlides
-          pagination={{ clickable: true, el: '.course-pricing-pagination' }}
-          className="overflow-visible"
-        >
-          {mobileCourses.map((course) => (
-            <SwiperSlide key={course.name} className="pt-5 !h-auto">
-              <CourseCard course={course} compact />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="course-pricing-pagination flex justify-center gap-2 mt-6" />
-      </div>
-    )
+    return <MobileCoursePricing courses={courses} />
   }
 
   return (

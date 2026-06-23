@@ -14,9 +14,11 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { branchData, teamMembers, vehicles, PRIHLASKA_URL } from '@/app/data/branches'
+import { courseTermsByBranch, SHOW_COURSE_TERMS } from '@/app/data/courseTerms'
 import { siteConfig } from '@/app/lib/site'
 import CoursePricing from '@/app/components/CoursePricing'
 import FeatureCards from '@/app/components/FeatureCards'
+import CourseSchedule from '@/app/components/CourseSchedule'
 
 const LocalReviews = dynamic(() => import('@/app/components/LocalReviews'), {
   ssr: false,
@@ -38,6 +40,7 @@ export default function BranchPageClient({ branchId }: { branchId: string }) {
   const textOpacity = useTransform(scrollYProgress, [0, 0.75, 1], [1, 1, 0])
 
   const branch = branchData[branchId]
+  const courseTerms = courseTermsByBranch[branchId] ?? []
 
   if (!branch) {
     return (
@@ -210,21 +213,44 @@ export default function BranchPageClient({ branchId }: { branchId: string }) {
               {branch.slogan}
             </motion.p>
 
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {SHOW_COURSE_TERMS && (
+              <motion.button
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                type="button"
+                onClick={() => {
+                  document.getElementById('terminy')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                className="px-10 py-4 bg-white text-apple-gray rounded-full text-lg font-semibold hover:bg-white/95 transition-colors inline-flex items-center gap-2 shadow-xl"
+              >
+                <Calendar className="w-5 h-5" />
+                Termíny kurzů
+              </motion.button>
+            )}
             <motion.button
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
+              transition={{ duration: 0.8, delay: SHOW_COURSE_TERMS ? 1 : 0.9 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="button"
               onClick={() => {
-                document.getElementById('sluzby')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                document.getElementById('cenik')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }}
-              className="px-10 py-4 bg-white text-apple-gray rounded-full text-lg font-semibold hover:bg-white/95 transition-colors inline-flex items-center gap-2 shadow-xl"
+              className={`px-10 py-4 rounded-full text-lg font-semibold transition-colors inline-flex items-center gap-2 ${
+                SHOW_COURSE_TERMS
+                  ? 'bg-white/15 text-white border border-white/40 hover:bg-white/25'
+                  : 'bg-white text-apple-gray hover:bg-white/95 shadow-xl'
+              }`}
             >
               <Calendar className="w-5 h-5" />
-              Prozkoumat služby
+              Ceník kurzů
             </motion.button>
+            </div>
           </div>
         </motion.div>
 
@@ -289,7 +315,11 @@ export default function BranchPageClient({ branchId }: { branchId: string }) {
         </div>
       </section>
 
-      <section id="sluzby" className="py-32 px-6 bg-white">
+      {SHOW_COURSE_TERMS && (
+        <CourseSchedule terms={courseTerms} branchName={branch.name} />
+      )}
+
+      <section id="cenik" className="py-32 px-6 bg-apple-light">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -299,19 +329,18 @@ export default function BranchPageClient({ branchId }: { branchId: string }) {
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-bold text-apple-gray mb-6 tracking-tight">
-              Služby a Ceny
+              Ceník kurzů
             </h2>
+            <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto">
+              Přehled našich kurzů a aktuálních cen. Platbu lze rozložit do splátek bez navýšení.
+            </p>
           </motion.div>
 
           <CoursePricing courses={branch.courses} />
-
-          <p className="text-center text-base text-gray-500 font-light mt-12">
-            Veškeré naše služby lze hradit ve splátkách bez navýšení
-          </p>
         </div>
       </section>
 
-      <section className="py-32 bg-apple-light">
+      <section className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold text-apple-gray mb-6 tracking-tight text-center">
             Za nás mluví vaše recenze
