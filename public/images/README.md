@@ -1,43 +1,30 @@
-# 📁 Struktura složky pro obrázky
+# Obrázky pro Autoškolu Martinec
 
-Tato složka obsahuje všechny obrázky pro web autoškoly iDrive.
+Všechny statické obrázky webu patří do `public/images/`.
 
-## 📂 Podsložky:
+## Složky
 
-### `/pobocky`
-Obrázky pro jednotlivé pobočky (hero sekce, pozadí)
-- `bystrice-hero.jpg` - Hero obrázek pro Bystřici
-- `prerov-hero.jpg` - Hero obrázek pro Přerov
+| Složka | Obsah |
+|--------|--------|
+| `loga/` | Logo, favicon |
+| `pobocky/` | Hero fotky a náhledy poboček |
+| `tym/` | Fotky instruktorů |
+| `vozidla/` | Fotky vozidel z vozového parku |
+| `icony/` | Ikony sociálních sítí |
 
-### `/vozidla`
-Fotografie vozidel z vozového parku
-- Např: `octavia-2023.jpg`, `fabia-2023.jpg`, atd.
+## Doporučené formáty
 
-### `/tym`
-Fotografie instruktorů a týmu
-- Např: `jan-novak.jpg`, `petra-svobodova.jpg`, atd.
+- **Formát:** WebP nebo JPG
+- **Hero:** min. 1920×1080 px
+- **Vozidla:** min. 1200×800 px
+- **Tým:** min. 800×800 px (čtverec)
 
-## 🎨 Doporučené formáty:
+## Použití v kódu
 
-- **Formát**: JPG nebo WebP
-- **Hero obrázky**: min. 1920x1080px
-- **Vozidla**: min. 1200x800px
-- **Tým**: min. 800x800px (čtvercové)
-
-## 💡 Použití v kódu:
-
-```jsx
-// Příklad použití
-<img src="/images/pobocky/bystrice-hero.jpg" alt="Bystřice" />
-
-// Nebo s Next.js Image komponentou
+```tsx
 import Image from 'next/image'
-<Image src="/images/vozidla/octavia-2023.jpg" width={800} height={600} alt="Škoda Octavia" />
+
+<Image src="/images/tym/jiri-martinec.webp" width={400} height={400} alt="Jiří Martinec" />
 ```
 
-## 📍 Cesta k obrázkům:
-
-Po nahrání obrázků do těchto složek, budou dostupné na:
-- `http://localhost:3000/images/pobocky/nazev-souboru.jpg`
-- `http://localhost:3000/images/vozidla/nazev-souboru.jpg`
-- `http://localhost:3000/images/tym/nazev-souboru.jpg`
+Po nahrání jsou obrázky dostupné na `https://autoskola-martinec.cz/images/...`.

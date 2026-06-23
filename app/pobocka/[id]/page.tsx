@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { branchData } from '@/app/data/branches'
 import { siteConfig } from '@/app/lib/site'
+import { reviewsData } from '@/app/lib/reviews'
+import { buildDrivingSchoolSchema } from '@/app/lib/schema'
+import JsonLd from '@/app/components/JsonLd'
 import BranchPageClient from './BranchPageClient'
 
 type PageProps = {
@@ -51,5 +54,20 @@ export function generateStaticParams() {
 
 export default async function BranchPage({ params }: PageProps) {
   const { id } = await params
-  return <BranchPageClient branchId={id} />
+  const { summary, featured } = reviewsData
+
+  return (
+    <>
+      {branchData[id] && (
+        <JsonLd
+          data={buildDrivingSchoolSchema(id, branchData[id], summary, true, featured)}
+        />
+      )}
+      <BranchPageClient
+        branchId={id}
+        reviewSummary={summary}
+        featuredReviews={featured}
+      />
+    </>
+  )
 }

@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import JsonLd from './components/JsonLd'
+import { reviewsData } from './lib/reviews'
+import { buildOrganizationSchema, buildWebSiteSchema } from './lib/schema'
 import { siteConfig } from './lib/site'
 
 export const metadata: Metadata = {
@@ -44,9 +47,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { summary } = reviewsData
+
   return (
     <html lang="cs">
-      <body>{children}</body>
+      <body>
+        <JsonLd
+          data={[buildWebSiteSchema(), buildOrganizationSchema(summary)]}
+        />
+        {children}
+      </body>
     </html>
   )
 }

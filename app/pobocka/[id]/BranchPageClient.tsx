@@ -19,6 +19,7 @@ import { siteConfig } from '@/app/lib/site'
 import CoursePricing from '@/app/components/CoursePricing'
 import FeatureCards from '@/app/components/FeatureCards'
 import CourseSchedule from '@/app/components/CourseSchedule'
+import type { ParsedReview, ReviewSummary } from '@/app/lib/reviews'
 
 const LocalReviews = dynamic(() => import('@/app/components/LocalReviews'), {
   ssr: false,
@@ -28,7 +29,15 @@ function phoneHref(phone: string) {
   return `tel:${phone.replace(/\s/g, '')}`
 }
 
-export default function BranchPageClient({ branchId }: { branchId: string }) {
+export default function BranchPageClient({
+  branchId,
+  reviewSummary,
+  featuredReviews,
+}: {
+  branchId: string
+  reviewSummary: ReviewSummary
+  featuredReviews: ParsedReview[]
+}) {
   const heroRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -319,7 +328,10 @@ export default function BranchPageClient({ branchId }: { branchId: string }) {
         <CourseSchedule terms={courseTerms} branchName={branch.name} />
       )}
 
-      <section id="cenik" className="py-32 px-6 bg-apple-light">
+      <section
+        id="cenik"
+        className={`py-32 px-6 ${SHOW_COURSE_TERMS ? 'bg-apple-light' : 'bg-white'}`}
+      >
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -340,16 +352,24 @@ export default function BranchPageClient({ branchId }: { branchId: string }) {
         </div>
       </section>
 
-      <section className="py-32 px-6 bg-white">
+      <section
+        className={`py-32 px-6 ${SHOW_COURSE_TERMS ? 'bg-white' : 'bg-apple-light'}`}
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold text-apple-gray mb-6 tracking-tight text-center">
             Za nás mluví vaše recenze
           </h2>
-          <p className="text-xl text-gray-600 font-light text-center mb-20">
-            Přečtěte si, co o nás říkají naši absolventi
+          <p className="text-xl text-gray-600 font-light text-center mb-20 max-w-3xl mx-auto">
+            {branchId === 'bystrice'
+              ? 'Recenze absolventů z Google — žáci píší hlavně na pobočku Přerov, vztahují se na celou autoškolu.'
+              : 'Přečtěte si, co o nás říkají naši absolventi na Google.'}
           </p>
           <div className="px-6">
-            <LocalReviews googleReviewsUrl={branch.googleReviewsUrl} />
+            <LocalReviews
+              googleReviewsUrl={branch.googleReviewsUrl}
+              summary={reviewSummary}
+              featuredReviews={featuredReviews}
+            />
           </div>
         </div>
       </section>
