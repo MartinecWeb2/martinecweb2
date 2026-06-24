@@ -83,7 +83,7 @@ const sharedCoursesBystrice: Course[] = [
     name: 'Řidičský průkaz skupiny B (vč. L17)',
     subtitle:
       'Zahájení kurzu každý týden (délka trvání kurzu včetně závěrečné zkoušky 3-4 měsíce)',
-    price: '20 490 Kč',
+    price: '19 900 Kč',
     features: [
       '28 hodin jízd + 2 Bonusové ZDARMA',
       'Individuální výukový plán přizpůsobený vašemu tempu.',
@@ -107,7 +107,7 @@ const sharedCoursesBystrice: Course[] = [
 ]
 
 const sharedCoursesPrerov: Course[] = sharedCoursesBystrice.map((course) =>
-  course.featured ? { ...course, price: '21 490 Kč' } : course
+  course.featured ? { ...course, price: '20 900 Kč' } : course
 )
 
 export const teamMembers: TeamMember[] = [
