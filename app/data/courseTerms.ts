@@ -50,6 +50,24 @@ export const courseTermsByBranch: Record<string, CourseTerm[]> = {
       note: 'Volná místa',
     },
   ],
+  valmez: [
+    {
+      startDate: '2026-07-21',
+      capacity: 12,
+      enrolled: 8,
+    },
+    {
+      startDate: '2026-08-18',
+      capacity: 12,
+      enrolled: 12,
+    },
+    {
+      startDate: '2026-09-15',
+      capacity: 12,
+      enrolled: 3,
+      note: 'Volná místa',
+    },
+  ],
 }
 
 export type TermAvailability = 'open' | 'low' | 'full'

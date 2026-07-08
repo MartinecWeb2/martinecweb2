@@ -21,6 +21,13 @@ const branches = [
     image: '/images/pobocky/c2561d2a-e665-41d0-b620-3a9ae7848f0f.webp',
     gradient: 'from-blue-600 to-indigo-700',
   },
+  {
+    id: 'valmez',
+    name: 'Valašské Meziříčí',
+    description: 'Naše pobočka v srdci Valašska',
+    image: '/images/pobocky/valmez-card.png',
+    gradient: 'from-amber-600 to-orange-700',
+  },
 ]
 
 export default function BranchSelection() {
@@ -115,7 +122,7 @@ export default function BranchSelection() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {branches.map((branch, index) => (
               <motion.div
                 key={branch.id}

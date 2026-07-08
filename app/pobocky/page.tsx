@@ -5,11 +5,11 @@ import { siteConfig } from '@/app/lib/site'
 export const metadata: Metadata = {
   title: 'Pobočky',
   description:
-    'Vyberte si pobočku Autoškoly Martinec v Bystřici pod Hostýnem nebo Přerově. Moderní výuka řízení pro skupinu B.',
+    'Vyberte si pobočku Autoškoly Martinec v Bystřici pod Hostýnem, Přerově nebo Valašském Meziříčí. Moderní výuka řízení pro skupinu B.',
   openGraph: {
     title: `Pobočky | ${siteConfig.name}`,
     description:
-      'Vyberte si pobočku v Bystřici pod Hostýnem nebo Přerově a začněte jezdit s Autoškolou Martinec.',
+      'Vyberte si pobočku v Bystřici pod Hostýnem, Přerově nebo Valašském Meziříčí a začněte jezdit s Autoškolou Martinec.',
     url: `${siteConfig.url}/pobocky`,
     images: [{ url: siteConfig.ogImage, alt: siteConfig.name }],
   },

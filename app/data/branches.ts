@@ -38,6 +38,7 @@ export interface Branch {
   hours: string
   mapUrl: string
   googleReviewsUrl: string
+  badge?: string
   features: BranchFeature[]
   courses: Course[]
 }
@@ -110,6 +111,8 @@ const sharedCoursesPrerov: Course[] = sharedCoursesBystrice.map((course) =>
   course.featured ? { ...course, price: '20 900 Kč' } : course
 )
 
+const sharedCoursesValmez: Course[] = sharedCoursesBystrice
+
 export const teamMembers: TeamMember[] = [
   {
     name: 'Jiří Martinec',
@@ -153,6 +156,22 @@ export const branchData: Record<string, Branch> = {
     googleReviewsUrl,
     features: sharedFeatures,
     courses: sharedCoursesPrerov,
+  },
+  valmez: {
+    name: 'Valašské Meziříčí',
+    slogan: 'Profesionální výuka v srdci Valašska',
+    hero: '/images/pobocky/valmez-hero.png',
+    badge: '/images/pobocky/valmez-logo.png',
+    description: 'Autoškola skupiny B ve Valašském Meziříčí',
+    address: 'Poláškova 1535, 757 01 Valašské Meziříčí',
+    phone: '+420 603 398 127',
+    email: 'info@autoskola-martinec.cz',
+    hours: 'Po telefonické domluvě',
+    mapUrl:
+      'https://www.google.com/maps?q=Pol%C3%A1%C5%A1kova+1535,+757+01+Vala%C5%A1sk%C3%A9+Mezi%C5%99%C3%AD%C4%8D%C3%AD&hl=cs&z=16&output=embed',
+    googleReviewsUrl,
+    features: sharedFeatures,
+    courses: sharedCoursesValmez,
   },
 }
 

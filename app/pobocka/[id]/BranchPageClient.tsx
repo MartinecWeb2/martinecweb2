@@ -193,6 +193,23 @@ export default function BranchPageClient({
           className="relative z-10 h-full flex items-center justify-center text-center px-6"
         >
           <div className="max-w-5xl mx-auto">
+            {branch.badge && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="mb-6 flex justify-center"
+              >
+                <Image
+                  src={branch.badge}
+                  alt="I love Valmez"
+                  width={180}
+                  height={220}
+                  className="w-28 md:w-36 h-auto mix-blend-screen drop-shadow-lg"
+                  priority
+                />
+              </motion.div>
+            )}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -360,7 +377,7 @@ export default function BranchPageClient({
             Za nás mluví vaše recenze
           </h2>
           <p className="text-xl text-gray-600 font-light text-center mb-20 max-w-3xl mx-auto">
-            {branchId === 'bystrice'
+            {branchId !== 'prerov'
               ? 'Recenze absolventů z Google — žáci píší hlavně na pobočku Přerov, vztahují se na celou autoškolu.'
               : 'Přečtěte si, co o nás říkají naši absolventi na Google.'}
           </p>

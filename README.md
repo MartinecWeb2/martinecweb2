@@ -1,6 +1,6 @@
 # Autoškola Martinec
 
-Moderní webová stránka pro autoškolu s pobočkami v Bystřici pod Hostýnem a Přerově.
+Moderní webová stránka pro autoškolu s pobočkami v Bystřici pod Hostýnem, Přerově a Valašském Meziříčí.
 
 ## Technologie
 
@@ -48,6 +48,7 @@ app/
 | `/pobocky` | Výběr pobočky |
 | `/pobocka/bystrice` | Detail – Bystřice pod Hostýnem |
 | `/pobocka/prerov` | Detail – Přerov |
+| `/pobocka/valmez` | Detail – Valašské Meziříčí |
 
 ## Úprava obsahu
 
