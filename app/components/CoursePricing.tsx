@@ -33,9 +33,11 @@ function sortForMobile(courses: Course[]) {
 function CourseCard({
   course,
   compact = false,
+  informational = false,
 }: {
   course: Course
   compact?: boolean
+  informational?: boolean
 }) {
   const showGiftVoucher = GIFT_VOUCHER_COURSES.has(course.name)
   const showL17Link = course.name === 'Řidičský průkaz skupiny B (vč. L17)'
@@ -128,24 +130,44 @@ function CourseCard({
         </a>
       )}
 
-      <button
-        type="button"
-        onClick={() => window.open(PRIHLASKA_URL, '_blank')}
-        className={`w-full rounded-full font-semibold transition-colors ${
-          compact ? 'py-3 text-sm' : 'py-4'
-        } ${
-          course.featured
-            ? 'bg-white text-apple-gray hover:bg-white/95'
-            : 'bg-apple-gray text-white hover:bg-apple-gray/90'
-        }`}
-      >
-        Podat Přihlášku
-      </button>
+      {informational ? (
+        <div
+          className={`w-full rounded-full font-semibold text-center ${
+            compact ? 'py-3 text-sm' : 'py-4'
+          } ${
+            course.featured
+              ? 'bg-white/15 text-white border border-white/30'
+              : 'bg-white text-apple-gray border border-gray-200'
+          }`}
+        >
+          Zahájení od 1. září
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => window.open(PRIHLASKA_URL, '_blank')}
+          className={`w-full rounded-full font-semibold transition-colors ${
+            compact ? 'py-3 text-sm' : 'py-4'
+          } ${
+            course.featured
+              ? 'bg-white text-apple-gray hover:bg-white/95'
+              : 'bg-apple-gray text-white hover:bg-apple-gray/90'
+          }`}
+        >
+          Podat Přihlášku
+        </button>
+      )}
     </div>
   )
 }
 
-function MobileCoursePricing({ courses }: { courses: Course[] }) {
+function MobileCoursePricing({
+  courses,
+  informational = false,
+}: {
+  courses: Course[]
+  informational?: boolean
+}) {
   const sorted = sortForMobile(courses)
   const [activeIndex, setActiveIndex] = useState(0)
   const active = sorted[activeIndex]
@@ -189,14 +211,20 @@ function MobileCoursePricing({ courses }: { courses: Course[] }) {
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25 }}
         >
-          <CourseCard course={active} />
+          <CourseCard course={active} informational={informational} />
         </motion.div>
       </AnimatePresence>
     </div>
   )
 }
 
-export default function CoursePricing({ courses }: { courses: Course[] }) {
+export default function CoursePricing({
+  courses,
+  informational = false,
+}: {
+  courses: Course[]
+  informational?: boolean
+}) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -212,7 +240,7 @@ export default function CoursePricing({ courses }: { courses: Course[] }) {
   }
 
   if (isMobile) {
-    return <MobileCoursePricing courses={courses} />
+    return <MobileCoursePricing courses={courses} informational={informational} />
   }
 
   return (
@@ -226,7 +254,7 @@ export default function CoursePricing({ courses }: { courses: Course[] }) {
           transition={{ duration: 0.6, delay: index * 0.1 }}
           className="h-full"
         >
-          <CourseCard course={course} />
+          <CourseCard course={course} informational={informational} />
         </motion.div>
       ))}
     </div>

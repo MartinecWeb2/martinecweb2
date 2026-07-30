@@ -15,18 +15,18 @@ const branches = [
     gradient: 'from-emerald-600 to-teal-700',
   },
   {
-    id: 'prerov',
-    name: 'Přerov',
-    description: 'Naše pobočka v centru Přerova',
-    image: '/images/pobocky/c2561d2a-e665-41d0-b620-3a9ae7848f0f.webp',
-    gradient: 'from-blue-600 to-indigo-700',
-  },
-  {
     id: 'valmez',
     name: 'Valašské Meziříčí',
     description: 'Naše pobočka v srdci Valašska',
     image: '/images/pobocky/valmez-card.png',
     gradient: 'from-amber-600 to-orange-700',
+  },
+  {
+    id: 'prerov',
+    name: 'Přerov',
+    description: 'Naše pobočka v centru Přerova',
+    image: '/images/pobocky/c2561d2a-e665-41d0-b620-3a9ae7848f0f.webp',
+    gradient: 'from-blue-600 to-indigo-700',
   },
 ]
 
