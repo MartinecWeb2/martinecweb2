@@ -14,7 +14,7 @@ const MOBILE_ORDER = [
 
 const SHORT_LABELS: Record<string, string> = {
   'Řidičský průkaz skupiny B (vč. L17)': 'Skupina B',
-  'Vrácení řidičského průkazu': 'Vrácení RP',
+  'Vrácení řidičského průkazu': 'Vrácení ŘP',
   'Kondiční jízdy': 'Kondiční jízdy',
 }
 
@@ -131,16 +131,31 @@ function CourseCard({
       )}
 
       {informational ? (
-        <div
-          className={`w-full rounded-full font-semibold text-center ${
-            compact ? 'py-3 text-sm' : 'py-4'
-          } ${
-            course.featured
-              ? 'bg-white/15 text-white border border-white/30'
-              : 'bg-white text-apple-gray border border-gray-200'
-          }`}
-        >
-          Zahájení od 1. září
+        <div className="space-y-3">
+          <div
+            className={`w-full rounded-full font-semibold text-center ${
+              compact ? 'py-3 text-sm' : 'py-4'
+            } ${
+              course.featured
+                ? 'bg-white/15 text-white border border-white/30'
+                : 'bg-white text-apple-gray border border-gray-200'
+            }`}
+          >
+            Zahájení od 1. září
+          </div>
+          <button
+            type="button"
+            onClick={() => window.open(PRIHLASKA_URL, '_blank')}
+            className={`w-full rounded-full font-semibold transition-colors ${
+              compact ? 'py-3 text-sm' : 'py-4'
+            } ${
+              course.featured
+                ? 'bg-white text-apple-gray hover:bg-white/95'
+                : 'bg-apple-gray text-white hover:bg-apple-gray/90'
+            }`}
+          >
+            Podat Přihlášku
+          </button>
         </div>
       ) : (
         <button

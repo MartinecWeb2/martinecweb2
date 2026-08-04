@@ -6,6 +6,9 @@ import Image from 'next/image'
 import { X } from 'lucide-react'
 import type { BranchFeature, TeamMember, Vehicle } from '@/app/data/branches'
 
+/** Dočasně vypnuté panely – karty zůstávají, bez hover/klik rozbalení */
+const SHOW_FLEET_AND_TEAM_PANELS = false
+
 function useCanHover() {
   const [canHover, setCanHover] = useState(false)
 
@@ -179,7 +182,9 @@ function FeatureCard({
   const canHover = useCanHover()
   const [hovered, setHovered] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const isExpandable = feature.panel === 'fleet' || feature.panel === 'team'
+  const hasPanel = feature.panel === 'fleet' || feature.panel === 'team'
+  const isExpandable =
+    hasPanel && SHOW_FLEET_AND_TEAM_PANELS
   const showPanel = isExpandable && (canHover ? hovered : false)
 
   const handleClick = () => {
