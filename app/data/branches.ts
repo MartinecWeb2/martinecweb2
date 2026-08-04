@@ -157,7 +157,7 @@ export const branchData: Record<string, Branch> = {
     hero: '/images/pobocky/valmez-hero.png',
     badge: '/images/pobocky/valmez-logo.png',
     description: 'Autoškola pro skupinu B ve Valašském Meziříčí',
-    address: 'Poláškova 1535, 757 01 Valašské Meziříčí',
+    address: 'Poláškova 1535, 757 01 Valašské Meziříčí (HS Computer)',
     phone: '+420 603 398 127',
     email: 'info@autoskola-martinec.cz',
     hours: 'Po telefonické domluvě',
