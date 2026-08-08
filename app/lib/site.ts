@@ -6,4 +6,5 @@ export const siteConfig = {
   phone: '+420 603 398 127',
   email: 'info@autoskola-martinec.cz',
   ogImage: '/images/loga/Logo-Autoskola-Martinec-1.png',
+  googleAdsId: 'AW-18370943437',
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import JsonLd from './components/JsonLd'
 import { reviewsData } from './lib/reviews'
@@ -52,6 +53,18 @@ export default function RootLayout({
   return (
     <html lang="cs">
       <body>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAdsId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${siteConfig.googleAdsId}');
+          `}
+        </Script>
         <JsonLd
           data={[buildWebSiteSchema(), buildOrganizationSchema(summary)]}
         />
