@@ -111,7 +111,7 @@ const sharedCoursesBystrice: Course[] = [
 ]
 
 const sharedCoursesPrerov: Course[] = sharedCoursesBystrice.map((course) =>
-  course.featured ? { ...course, price: '20 900 Kč' } : course
+  course.featured ? { ...course, price: '21 900 Kč' } : course
 )
 
 const sharedCoursesValmez: Course[] = sharedCoursesBystrice.map((course) => {
