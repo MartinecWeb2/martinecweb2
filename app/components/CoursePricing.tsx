@@ -33,11 +33,9 @@ function sortForMobile(courses: Course[]) {
 function CourseCard({
   course,
   compact = false,
-  informational = false,
 }: {
   course: Course
   compact?: boolean
-  informational?: boolean
 }) {
   const showGiftVoucher = GIFT_VOUCHER_COURSES.has(course.name)
   const showL17Link = course.name === 'Řidičský průkaz skupiny B (vč. L17)'
@@ -130,59 +128,24 @@ function CourseCard({
         </a>
       )}
 
-      {informational ? (
-        <div className="space-y-3">
-          <div
-            className={`w-full rounded-full font-semibold text-center ${
-              compact ? 'py-3 text-sm' : 'py-4'
-            } ${
-              course.featured
-                ? 'bg-white/15 text-white border border-white/30'
-                : 'bg-white text-apple-gray border border-gray-200'
-            }`}
-          >
-            Zahájení od 1. září
-          </div>
-          <button
-            type="button"
-            onClick={() => window.open(PRIHLASKA_URL, '_blank')}
-            className={`w-full rounded-full font-semibold transition-colors ${
-              compact ? 'py-3 text-sm' : 'py-4'
-            } ${
-              course.featured
-                ? 'bg-white text-apple-gray hover:bg-white/95'
-                : 'bg-apple-gray text-white hover:bg-apple-gray/90'
-            }`}
-          >
-            Podat Přihlášku
-          </button>
-        </div>
-      ) : (
-        <button
-          type="button"
-          onClick={() => window.open(PRIHLASKA_URL, '_blank')}
-          className={`w-full rounded-full font-semibold transition-colors ${
-            compact ? 'py-3 text-sm' : 'py-4'
-          } ${
-            course.featured
-              ? 'bg-white text-apple-gray hover:bg-white/95'
-              : 'bg-apple-gray text-white hover:bg-apple-gray/90'
-          }`}
-        >
-          Podat Přihlášku
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={() => window.open(PRIHLASKA_URL, '_blank')}
+        className={`w-full rounded-full font-semibold transition-colors ${
+          compact ? 'py-3 text-sm' : 'py-4'
+        } ${
+          course.featured
+            ? 'bg-white text-apple-gray hover:bg-white/95'
+            : 'bg-apple-gray text-white hover:bg-apple-gray/90'
+        }`}
+      >
+        Podat Přihlášku
+      </button>
     </div>
   )
 }
 
-function MobileCoursePricing({
-  courses,
-  informational = false,
-}: {
-  courses: Course[]
-  informational?: boolean
-}) {
+function MobileCoursePricing({ courses }: { courses: Course[] }) {
   const sorted = sortForMobile(courses)
   const [activeIndex, setActiveIndex] = useState(0)
   const active = sorted[activeIndex]
@@ -226,20 +189,14 @@ function MobileCoursePricing({
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25 }}
         >
-          <CourseCard course={active} informational={informational} />
+          <CourseCard course={active} />
         </motion.div>
       </AnimatePresence>
     </div>
   )
 }
 
-export default function CoursePricing({
-  courses,
-  informational = false,
-}: {
-  courses: Course[]
-  informational?: boolean
-}) {
+export default function CoursePricing({ courses }: { courses: Course[] }) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -255,7 +212,7 @@ export default function CoursePricing({
   }
 
   if (isMobile) {
-    return <MobileCoursePricing courses={courses} informational={informational} />
+    return <MobileCoursePricing courses={courses} />
   }
 
   return (
@@ -269,7 +226,7 @@ export default function CoursePricing({
           transition={{ duration: 0.6, delay: index * 0.1 }}
           className="h-full"
         >
-          <CourseCard course={course} informational={informational} />
+          <CourseCard course={course} />
         </motion.div>
       ))}
     </div>

@@ -361,15 +361,11 @@ export default function BranchPageClient({
               Ceník kurzů
             </h2>
             <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto">
-              {branch.pricingNote ??
-                'Přehled našich kurzů a aktuálních cen. Platbu lze rozložit do splátek bez navýšení.'}
+              Přehled našich kurzů a aktuálních cen. Platbu lze rozložit do splátek bez navýšení.
             </p>
           </motion.div>
 
-          <CoursePricing
-            courses={branch.courses}
-            informational={branch.pricingInformational}
-          />
+          <CoursePricing courses={branch.courses} />
         </div>
       </section>
 

@@ -39,9 +39,6 @@ export interface Branch {
   mapUrl: string
   googleReviewsUrl: string
   badge?: string
-  /** Orientační ceník (bez přihlášky) */
-  pricingInformational?: boolean
-  pricingNote?: string
   features: BranchFeature[]
   courses: Course[]
 }
@@ -76,7 +73,7 @@ const sharedFeatures: BranchFeature[] = [
 const sharedCoursesBystrice: Course[] = [
   {
     name: 'Vrácení řidičského průkazu',
-    price: '5 990 Kč',
+    price: '6 900 Kč',
     features: [
       'Kompletní řešení dokumentace (Veškeré podklady vyřešíme za vás)',
       'Expertní poradenství (Podpora při řešení případných komplikací)',
@@ -115,7 +112,17 @@ const sharedCoursesPrerov: Course[] = sharedCoursesBystrice.map((course) =>
 )
 
 const sharedCoursesValmez: Course[] = sharedCoursesBystrice.map((course) => {
-  if (course.featured) return { ...course, price: '18 900 Kč' }
+  if (course.featured) {
+    return {
+      ...course,
+      price: '18 900 Kč',
+      subtitle:
+        'Zahájení kurzu každý týden (délka trvání kurzu včetně závěrečné zkoušky 2-3 měsíce)',
+    }
+  }
+  if (course.name === 'Vrácení řidičského průkazu') {
+    return { ...course, price: '5 900 Kč' }
+  }
   if (course.name === 'Kondiční jízdy') {
     return { ...course, price: '545 Kč/h' }
   }
@@ -164,7 +171,6 @@ export const branchData: Record<string, Branch> = {
     mapUrl:
       'https://www.google.com/maps?q=Pol%C3%A1%C5%A1kova+1535,+757+01+Vala%C5%A1sk%C3%A9+Mezi%C5%99%C3%AD%C4%8D%C3%AD&hl=cs&z=16&output=embed',
     googleReviewsUrl,
-    pricingInformational: true,
     features: sharedFeatures,
     courses: sharedCoursesValmez,
   },
